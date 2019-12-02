@@ -1,11 +1,7 @@
-import React from 'react'
-
+import React from "react"
+import { StyledMessageList } from "../styles/StyledMessageList"
 const MessageList = () => {
-    return (
-        <div>
-test
-        </div>
-    )
+  return <StyledMessageList>StyledMessageList</StyledMessageList>
 }
 
 export default MessageList

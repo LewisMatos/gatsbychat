@@ -1,11 +1,7 @@
-import React from 'react'
-
+import React from "react"
+import { StyledMessage } from '../styles/StyledMessage';
 const Message = () => {
-    return (
-        <div>
-test
-        </div>
-    )
+  return <StyledMessage>StyledMessage</StyledMessage>
 }
 
 export default Message

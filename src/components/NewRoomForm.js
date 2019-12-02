@@ -1,10 +1,10 @@
 import React from 'react'
-
+import { StyledNewRoomForm } from '../styles/StyledNewRoomForm';
 const NewRoomForm = () => {
     return (
-        <div>
-         test
-        </div>
+        <StyledNewRoomForm>
+        StyledNewRoomForm
+         </StyledNewRoomForm>
     )
 }
 

@@ -1,10 +1,11 @@
 import React from 'react'
+import { StyledRoomList } from '../styles/StyledRoomList';
 
 const RoomList = () => {
     return (
-        <div>
-        test
-        </div>
+        <StyledRoomList>
+        <h1>Test</h1>
+        </StyledRoomList>
     )
 }
 

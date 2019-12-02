@@ -1,13 +1,7 @@
-import React from 'react'
-
-const MessageForm = () => {
-    return (
-        <div>
-            test
-        </div>
-    )
+import React from "react"
+import { StyledMessageForm } from "../styles/StyledMessageForm"
+export const MessageForm = () => {
+  return <StyledMessageForm>StyledMessageForm</StyledMessageForm>
 }
 
 export default MessageForm
-
-test
