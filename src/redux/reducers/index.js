@@ -1,4 +1,4 @@
 import {combineReducers} from 'redux'
-import logReducer from './logReducer'
+import roomReducer from './roomReducer'
 
-export default combineReducers({log: logReducer});
+export default combineReducers({room: roomReducer});
