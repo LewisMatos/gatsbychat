@@ -1,8 +1,15 @@
+let activeEnv = process.env.GATSBY_ACTIVE_ENV || process.env.NODE_ENV || 'development'
+require('dotenv').config({
+  path: `.env.${activeEnv}`,
+})
+
 module.exports = {
   siteMetadata: {
     title: `Gatsby Default Starter`,
     description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
     author: `@gatsbyjs`,
+    instance_locator : `${process.env.INSTANCE_LOCATOR}`,
+    token_url : `${process.env.TOKEN_URL}`
   },
   plugins: [
     `gatsby-plugin-styled-components`,

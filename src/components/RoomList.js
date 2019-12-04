@@ -4,7 +4,7 @@ import { StyledRoomList } from '../styles/StyledRoomList';
 const RoomList = () => {
     return (
         <StyledRoomList>
-        <h1>Test</h1>
+        RoomList
         </StyledRoomList>
     )
 }

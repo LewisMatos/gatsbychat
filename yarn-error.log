@@ -1,5 +1,5 @@
 Arguments: 
-  /home/lewis/.nvm/versions/node/v13.2.0/bin/node /usr/share/yarn/bin/yarn.js add abel-plugin-styled-components
+  /home/lewis/.nvm/versions/node/v13.2.0/bin/node /usr/share/yarn/bin/yarn.js add redux-devtools-extensionredux-thunk
 
 PATH: 
   /home/lewis/.nvm/versions/node/v13.2.0/bin:/home/lewis/.local/bin:/home/lewis/.local/bin:/home/lewis/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
@@ -14,7 +14,7 @@ Platform:
   linux x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/abel-plugin-styled-components: Not found
+  Error: https://registry.yarnpkg.com/redux-devtools-extensionredux-thunk: Not found
       at Request.params.callback [as _callback] (/usr/share/yarn/lib/cli.js:66926:18)
       at Request.self.callback (/usr/share/yarn/lib/cli.js:140564:22)
       at Request.emit (events.js:210:5)
@@ -34,6 +34,7 @@ npm manifest:
     "version": "0.1.0",
     "author": "Lewis Matos <lewm20@gmail.com>",
     "dependencies": {
+      "babel-plugin-styled-components": "^1.10.6",
       "gatsby": "^2.18.4",
       "gatsby-image": "^2.2.34",
       "gatsby-plugin-manifest": "^2.2.30",
@@ -47,7 +48,10 @@ npm manifest:
       "react": "^16.12.0",
       "react-dom": "^16.12.0",
       "react-helmet": "^5.2.1",
-      "styled-components": "^4.4.1"
+      "react-redux": "^7.1.3",
+      "redux-thunk": "^2.3.0",
+      "styled-components": "^4.4.1",
+      "styled-normalize": "^8.0.6"
     },
     "devDependencies": {
       "prettier": "^1.19.1"
@@ -793,7 +797,7 @@ Lockfile:
       "@babel/plugin-transform-react-jsx-self" "^7.7.4"
       "@babel/plugin-transform-react-jsx-source" "^7.7.4"
   
-  "@babel/runtime@^7.1.2", "@babel/runtime@^7.3.4", "@babel/runtime@^7.4.5", "@babel/runtime@^7.6.3", "@babel/runtime@^7.7.2", "@babel/runtime@^7.7.4":
+  "@babel/runtime@^7.1.2", "@babel/runtime@^7.3.4", "@babel/runtime@^7.4.5", "@babel/runtime@^7.5.5", "@babel/runtime@^7.6.3", "@babel/runtime@^7.7.2", "@babel/runtime@^7.7.4":
     version "7.7.4"
     resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.7.4.tgz#b23a856751e4bf099262f867767889c0e3fe175b"
     integrity sha512-r24eVUUr0QqNZa+qrImUk8fn5SPhHq+IfYvIoIMg0do3GdK9sMdiLKP3GYVVaxpPKORgm8KRKaNTEhAjgIpLMw==
@@ -2004,7 +2008,7 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/babel-plugin-remove-graphql-queries/-/babel-plugin-remove-graphql-queries-2.7.17.tgz#8660d06259255f50b191d4afd7abb9f7e61e8bef"
     integrity sha512-zPAq5DEtucSMppt4U2zB1i9SiGMLOYtjNGoOo5PLw8f5jlihLTYYaPG3Sg2S4+tiB9k+tiWMa07FKXb6lV+rRA==
   
-  "babel-plugin-styled-components@>= 1":
+  "babel-plugin-styled-components@>= 1", babel-plugin-styled-components@^1.10.6:
     version "1.10.6"
     resolved "https://registry.yarnpkg.com/babel-plugin-styled-components/-/babel-plugin-styled-components-1.10.6.tgz#f8782953751115faf09a9f92431436912c34006b"
     integrity sha512-gyQj/Zf1kQti66100PhrCRjI5ldjaze9O0M3emXRPAN80Zsf8+e1thpTpaXJXVHXtaM4/+dJEgZHyS9Its+8SA==
@@ -9690,7 +9694,7 @@ Lockfile:
       shallowequal "^1.1.0"
       source-map "^0.7.3"
   
-  react-is@^16.6.0:
+  react-is@^16.6.0, react-is@^16.9.0:
     version "16.12.0"
     resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.12.0.tgz#2cc0fe0fba742d97fd527c42a13bec4eeb06241c"
     integrity sha512-rPCkf/mWBtKc97aLL9/txD8DZdemK0vkA3JMLShjlJB3Pj3s+lpf1KaBzMfQrAmhMQB0n1cU/SUGgKKBCe837Q==
@@ -9714,6 +9718,18 @@ Lockfile:
       object-assign "^4.1.1"
       prop-types "^15.6.2"
       scheduler "^0.15.0"
+  
+  react-redux@^7.1.3:
+    version "7.1.3"
+    resolved "https://registry.yarnpkg.com/react-redux/-/react-redux-7.1.3.tgz#717a3d7bbe3a1b2d535c94885ce04cdc5a33fc79"
+    integrity sha512-uI1wca+ECG9RoVkWQFF4jDMqmaw0/qnvaSvOoL/GA4dNxf6LoV8sUAcNDvE5NWKs4hFpn0t6wswNQnY3f7HT3w==
+    dependencies:
+      "@babel/runtime" "^7.5.5"
+      hoist-non-react-statics "^3.3.0"
+      invariant "^2.2.4"
+      loose-envify "^1.4.0"
+      prop-types "^15.7.2"
+      react-is "^16.9.0"
   
   react-side-effect@^1.1.0:
     version "1.1.5"
@@ -11091,6 +11107,11 @@ Lockfile:
       stylis "^3.5.0"
       stylis-rule-sheet "^0.0.10"
       supports-color "^5.5.0"
+  
+  styled-normalize@^8.0.6:
+    version "8.0.6"
+    resolved "https://registry.yarnpkg.com/styled-normalize/-/styled-normalize-8.0.6.tgz#f27f87292f46aa79ad6db6339aff5db529df3c91"
+    integrity sha512-tOnAD1+wV04aiVy6chaQA4u/EtkGiGZPlIBYvEfWlZQBrDqRhu9EdPyXlFzLWxpOmANoQelJqSOMlV3QNCDKkw==
   
   stylehacks@^4.0.0:
     version "4.0.3"
