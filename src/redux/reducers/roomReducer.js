@@ -1,34 +1,22 @@
-import { SET_LOADING, LOGS_ERROR, GET_ROOMS } from "../actions/types"
+import { SET_JOINABLE_ROOMS, SET_JOINED_ROOMS } from "../actions/types"
 
 const initialState = {
-  logs: null,
-  current: null,
-  loading: false,
-  error: null,
-  roomId: null,
-  messages: [],
-  joinableRooms: [],
-  joinedRooms: [],
+joinableRooms: [],
+joinedRooms: []
 }
 
 export default (state = initialState, action) => {
+  console.log(action)
   switch (action.type) {
-    case GET_ROOMS:
+    case SET_JOINABLE_ROOMS:
       return {
         ...state,
-        logs: action.payload,
-        loading: false,
+        joinableRooms: action.joinableRooms,
       }
-    case SET_LOADING:
+    case SET_JOINED_ROOMS:
       return {
         ...state,
-        loading: true,
-      }
-    case LOGS_ERROR:
-      console.error(action.payload)
-      return {
-        ...state,
-        error: action.payload,
+        joinedRooms: action.joinedRooms,
       }
     default:
       return state

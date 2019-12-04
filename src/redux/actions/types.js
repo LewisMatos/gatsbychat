@@ -1,5 +1,11 @@
-export const CREATE_MESSAGE = 'CREATE_MESSAGE';
-export const GET_MESSAGES = 'GET MESSAGES';
+export const GET_USER = "GET_USER"
+export const SET_USER = "SET_USER"
+export const GET_JOINED_ROOMS = "GET_JOINED_ROOMS"
+export const SET_JOINED_ROOMS = "SET_JOINED_ROOMS"
+export const GET_JOINABLE_ROOMS = "GET_JOINABLE_ROOMS"
+export const SET_JOINABLE_ROOMS = "SET_JOINABLE_ROOMS"
+export const CREATE_MESSAGE = "CREATE_MESSAGE"
+export const GET_MESSAGES = "GET MESSAGES"
 export const CREATE_ROOM = "CREATE_ROOM"
 export const GET_ROOMS = "GET_ROOMS"
 export const SET_LOADING = "SET_LOADING"

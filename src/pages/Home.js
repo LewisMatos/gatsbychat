@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useEffect } from "react"
 import { ChatManager, TokenProvider } from "@pusher/chatkit-client"
 
 import { StyledHome } from "../styles/StyledHome"
@@ -9,23 +9,37 @@ import MessageForm from "../components/MessageForm"
 import NewRoomForm from "../components/NewRoomForm"
 import { GlobalStyle } from "../styles/GlobalStyle"
 
-import { Provider } from "react-redux"
-import store from "../redux/store"
+import { connect} from "react-redux"
 import { useSiteMetadata } from "../hooks/useSiteMetaData"
+import { setUSER } from "../redux/actions/userActions"
+import { setJoinableRooms, setJoinedRooms } from "../redux/actions/roomActions"
 
-const Home = () => {
+const Home = ({joinedRooms,joinableRooms, setUSER, setJoinableRooms, setJoinedRooms }) => {
+  console.log(joinedRooms,joinableRooms);
   const { instance_locator, token_url } = useSiteMetadata()
+
+  const getRooms = async user => {
+    try {
+      let rooms = await user.getJoinableRooms()
+      setJoinableRooms(rooms)
+      setJoinedRooms(user.rooms)
+    } catch (err) {
+      console.log(err)
+    }
+  }
 
   useEffect(() => {
     const chatManager = new ChatManager({
       instanceLocator: instance_locator,
-      userId: "testuser",
+      userId: "testSecond",
       tokenProvider: new TokenProvider({
         url: token_url,
       }),
     })
 
     chatManager.connect().then(currentUser => {
+      getRooms(currentUser)
+      setUSER(currentUser)
       currentUser.subscribeToRoom({
         roomId: "8a162470-d049-4c80-916f-a6eb046102d4",
         hooks: {
@@ -35,21 +49,26 @@ const Home = () => {
         },
       })
     })
-
-  }, [])
+  }, [instance_locator, token_url])
 
   return (
-    <Provider store={store}>
+    <>
       <Header siteTitle={"GatsbyChat"} />
       <StyledHome>
-        <RoomList />
+        <RoomList rooms={[...joinableRooms, ...joinedRooms]}/>
         <MessageList />
         <MessageForm />
         <NewRoomForm />
       </StyledHome>
       <GlobalStyle />
-    </Provider>
+    </>
   )
 }
 
-export default Home
+const mapStateToProps = state => ({ user: state.user, joinableRooms: state.room.joinableRooms, joinedRooms: state.room.joinedRooms })
+
+export default connect(mapStateToProps, {
+  setUSER,
+  setJoinableRooms,
+  setJoinedRooms,
+})(Home)
