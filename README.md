@@ -17,6 +17,9 @@
 
 > Chat application using Gatsby,AWS Amplify, Graphql, Redux and ChatKit API
 
+# ![lewismatos](https://github.com/LewisMatos/gatsbychat/blob/master/src/images/screencapture-192-168-87-130-8000-2019-12-05-01_59_18.png)
+
+
 ## Install
 
 ```sh
