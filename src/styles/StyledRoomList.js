@@ -3,14 +3,14 @@ import styled from "styled-components"
 export const StyledRoomList = styled.div`
     grid-area: r;
     padding: 10px;
-    background-color: red;
-    overflow: scroll;
+    overflow: auto;
     height: 100%;
+    background-color:#400E40;
 
     ul{
         list-style-type: none;
         padding: 0;
-        overflow: scoll;
+        overflow: auto;
     }
 
     li{
@@ -19,12 +19,12 @@ export const StyledRoomList = styled.div`
 
     h3{
         margin: 5px 0;
-        color: black;
+        color: white;
     }
 
     a{
         margin: 5px 0;
-    color: grey;
+    color: white;
     }
 
     .active a{

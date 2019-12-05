@@ -1,12 +1,12 @@
-import { SET_JOINABLE_ROOMS, SET_JOINED_ROOMS } from "../actions/types"
+import { SET_JOINABLE_ROOMS, SET_JOINED_ROOMS, SET_ROOM_ID } from '../actions/types';
 
 const initialState = {
 joinableRooms: [],
-joinedRooms: []
+joinedRooms: [],
+roomId: null
 }
 
 export default (state = initialState, action) => {
-  console.log(action)
   switch (action.type) {
     case SET_JOINABLE_ROOMS:
       return {
@@ -18,6 +18,11 @@ export default (state = initialState, action) => {
         ...state,
         joinedRooms: action.joinedRooms,
       }
+      case SET_ROOM_ID:
+        return {
+          ...state,
+          roomId: action.roomId,
+        }
     default:
       return state
   }

@@ -2,16 +2,17 @@ import styled from "styled-components"
 
 export const StyledHome = styled.div`
     display: grid;
-    height: 100%;
+    width: 100%;
+    height: calc(100vh - 5rem);
     grid-template-columns: repeat(6, 1fr);
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 60px;
+    grid-template-rows: 3rem 1fr 1fr 1fr 1fr .5fr;
     grid-template-areas:
+        "n m m m m m"
         "r m m m m m"
         "r m m m m m"
         "r m m m m m"
         "r m m m m m"
-        "r m m m m m"
-        "n s s s s s";
+        "r s s s s s";
 }
 `
 

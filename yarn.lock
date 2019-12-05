@@ -1103,7 +1103,16 @@
     string-width "^2.0.0"
     strip-ansi "^3"
 
-"@pusher/chatkit-client@^1.13.2":
+"@pusher/chatkit-client-react@^0.1.2":
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/@pusher/chatkit-client-react/-/chatkit-client-react-0.1.2.tgz#c54305bb7cea2519c621632524b7e7a8b387b5ff"
+  integrity sha512-YpH+eLuIVM6AtTtV1UKmIMXpTqw13HBASthCu+Y6dfHCAElXOafypFIjMMdpTg7EybPkQmB1iNtj2Qow17UUBw==
+  dependencies:
+    "@pusher/chatkit-client" "^1.13.0"
+    prop-types "^15.7.2"
+    react "^16.9.0"
+
+"@pusher/chatkit-client@^1.13.0", "@pusher/chatkit-client@^1.13.2":
   version "1.13.2"
   resolved "https://registry.yarnpkg.com/@pusher/chatkit-client/-/chatkit-client-1.13.2.tgz#144dfc01c51386bf843e880927b286f73e15290f"
   integrity sha512-XJl63igmHnhLYcK82VK4+y+VIAuFlG/LBh2PjqUFv4tsOEAxzSLZ88scO/3vPD+bF2DxQCe/zJjzShbnSjGC9w==
@@ -9660,7 +9669,7 @@ react-side-effect@^1.1.0:
     exenv "^1.2.1"
     shallowequal "^1.0.1"
 
-react@^16.12.0:
+react@^16.12.0, react@^16.9.0:
   version "16.12.0"
   resolved "https://registry.yarnpkg.com/react/-/react-16.12.0.tgz#0c0a9c6a142429e3614834d5a778e18aa78a0b83"
   integrity sha512-fglqy3k5E+81pA8s+7K0/T3DBCF0ZDOher1elBFzF7O6arXJgzyu/FW+COxFvAWXJoJN9KIZbT2LXlukwphYTA==
