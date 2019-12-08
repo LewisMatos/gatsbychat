@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react"
-import {Chatkit, ChatManager, TokenProvider } from "@pusher/chatkit-client"
+import { Chatkit, ChatManager, TokenProvider } from "@pusher/chatkit-client"
+
+import Amplify from "aws-amplify"
+import { Authenticator,Greetings  } from "aws-amplify-react" // or 'aws-amplify-react-native';
 
 import { StyledHome } from "../styles/StyledHome"
 import Header from "../components/header"
@@ -10,7 +13,7 @@ import NewRoomForm from "../components/NewRoomForm"
 
 import { connect } from "react-redux"
 import { useSiteMetadata } from "../hooks/useSiteMetaData"
-import { setUSER } from "../redux/actions/userActions"
+import { setUSER, setSignedIn } from "../redux/actions/userActions"
 import {
   setJoinableRooms,
   setJoinedRooms,
@@ -26,12 +29,51 @@ const Home = ({
   joinedRooms,
   joinableRooms,
   setUSER,
+  setSignedIn,
+  signedIn,
   setMessage,
   clearMessage,
   setJoinableRooms,
   setJoinedRooms,
 }) => {
   const { instance_locator, token_url } = useSiteMetadata()
+
+  const signUpConfig = {
+    hideAllDefaults: true,
+    defaultCountryCode: "1",
+    signUpFields: [
+      {
+        label: "Username",
+        key: "username",
+        required: true,
+        displayOrder: 1,
+        type: "string",
+      },
+      {
+        label: "Email",
+        key: "email",
+        required: true,
+        displayOrder: 2,
+        type: "string",
+      },
+      {
+        label: "Password",
+        key: "password",
+        required: true,
+        displayOrder: 3,
+        type: "password",
+      },
+    ],
+  }
+
+  const handleStateChange = (authState, data) => {
+    if (authState === "signedIn") {
+      setSignedIn(true)
+    } else if (authState === "signedOut") {
+      setSignedIn(false)
+    }
+  }
+
   const getRooms = async currentUser => {
     if (currentUser) {
       user = currentUser
@@ -96,17 +138,26 @@ const Home = ({
 
   return (
     <>
-      <Header siteTitle={"GatsbyChat"} />
-      <StyledHome>
-        <RoomList
-          rooms={[...joinableRooms, ...joinedRooms]}
-          subscribeToRoom={subscribeToRoom}
-          roomId={roomId}
-        />
-        <MessageList roomId={roomId} message={message} />
-        <MessageForm disabled={!roomId} sendMessage={sendMessage} />
-        <NewRoomForm createRoom={createRoom}/>
-      </StyledHome>
+     <Header siteTitle={"GatsbyChat"}/>
+      {signedIn && (
+        <>
+          {/* <Header siteTitle={"GatsbyChat"} /> */}
+          <StyledHome>
+            <RoomList
+              rooms={[...joinableRooms, ...joinedRooms]}
+              subscribeToRoom={subscribeToRoom}
+              roomId={roomId}
+            />
+            <MessageList roomId={roomId} message={message} />
+            <MessageForm disabled={!roomId} sendMessage={sendMessage} />
+            <NewRoomForm createRoom={createRoom} />
+          </StyledHome>
+        </>
+      )}
+      <Authenticator
+        signUpConfig={signUpConfig}
+        onStateChange={handleStateChange}
+      />
     </>
   )
 }
@@ -117,10 +168,12 @@ const mapStateToProps = state => ({
   joinedRooms: state.room.joinedRooms,
   message: state.message,
   roomId: state.room.roomId,
+  signedIn: state.user.signedIn,
 })
 
 export default connect(mapStateToProps, {
   setUSER,
+  setSignedIn,
   setMessage,
   clearMessage,
   setRoomId,

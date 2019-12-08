@@ -1,0 +1,26 @@
+{
+	"auth": {
+		"gatsbychat7c1033eb": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": []
+		}
+	},
+	"api": {
+		"gatsbychat": {
+			"service": "AppSync",
+			"providerPlugin": "awscloudformation",
+			"output": {
+				"authConfig": {
+					"additionalAuthenticationProviders": [],
+					"defaultAuthentication": {
+						"authenticationType": "AMAZON_COGNITO_USER_POOLS",
+						"userPoolConfig": {
+							"userPoolId": "authgatsbychat7c1033eb"
+						}
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,15 +1,31 @@
+import React from "react"
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
-import React from "react"
+
+import { Auth } from "aws-amplify"
+
 import { connect } from "react-redux"
 import { StyledHeader } from "../styles/StyledHeader"
-const Header = ({ siteTitle, user }) => {
+import { setSignedIn } from "../redux/actions/userActions"
+
+const Header = ({ siteTitle, user, setSignedIn }) => {
+  const onClick = () => {
+    Auth.signOut()
+      .then(data => console.log(data))
+      .catch(err => console.log(err))
+    setSignedIn(false)
+  }
+
   return (
     <StyledHeader>
-          <div>
-            <Link to="/">{siteTitle}</Link>
-          </div>
-          {user.user && <div>{user.user.id}</div>}
+      <div>
+        <Link to="/">{siteTitle}</Link>
+      </div>
+      {user.user && user.signedIn && (
+        <>
+          <div>{user.user.id}</div> <button onClick={onClick}>LogOut</button>{" "}
+        </>
+      )}
     </StyledHeader>
   )
 }
@@ -23,4 +39,4 @@ Header.defaultProps = {
 }
 
 const mapStateToProps = state => ({ user: state.user })
-export default connect(mapStateToProps)(Header)
+export default connect(mapStateToProps, { setSignedIn })(Header)

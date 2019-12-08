@@ -1,6 +1,7 @@
 import {
     GET_USER,
-    SET_USER
+    SET_USER,
+    SIGNED_IN,
 } from './types';
 
 export const getUSER = () => async dispatch => {
@@ -20,3 +21,10 @@ export const getUSER = () => async dispatch => {
     }
   }
 
+
+  export const setSignedIn = (signedIn) => {
+    return {
+      type: SIGNED_IN,
+      signedIn
+    }
+  }

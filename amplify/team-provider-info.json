@@ -1,0 +1,20 @@
+{
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-gatsbychat-dev-20313-authRole",
+            "UnauthRoleArn": "arn:aws:iam::508550448516:role/amplify-gatsbychat-dev-20313-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::508550448516:role/amplify-gatsbychat-dev-20313-authRole",
+            "Region": "us-east-1",
+            "DeploymentBucketName": "amplify-gatsbychat-dev-20313-deployment",
+            "UnauthRoleName": "amplify-gatsbychat-dev-20313-unauthRole",
+            "StackName": "amplify-gatsbychat-dev-20313",
+            "StackId": "arn:aws:cloudformation:us-east-1:508550448516:stack/amplify-gatsbychat-dev-20313/cdd16400-1988-11ea-b1e2-12b44143da02",
+            "AmplifyAppId": "d24yq4e1tu90i"
+        },
+        "categories": {
+            "auth": {
+                "gatsbychat7c1033eb": {}
+            }
+        }
+    }
+}
