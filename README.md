@@ -1,17 +1,26 @@
 <h1 align="center">Welcome to GatsbyChat 👋</h1>
 <p>
   <img alt="Version" src="https://img.shields.io/badge/version-0.1.0-blue.svg?cacheSeconds=2592000" />
-  <a href="https://github.com/gatsbyjs/gatsby-starter-default#readme" target="_blank">
-    <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" />
+  <a href="https://github.com/LewisMatos/gatsbychat/#readme">
+    <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" target="_blank" />
   </a>
-  <a href="https://github.com/gatsbyjs/gatsby-starter-default/graphs/commit-activity" target="_blank">
-    <img alt="Maintenance" src="https://img.shields.io/badge/Maintained%3F-yes-green.svg" />
+  <a href="https://github.com/LewisMatos/gatsbychat//graphs/commit-activity">
+    <img alt="Maintenance" src="https://img.shields.io/badge/Maintained%3F-yes-green.svg" target="_blank" />
   </a>
-  <a href="https://github.com/gatsbyjs/gatsby-starter-default/blob/master/LICENSE" target="_blank">
-    <img alt="License: MIT" src="https://img.shields.io/github/license/LewisMatos/GatsbyChat" />
+  <a href="https://github.com/LewisMatos/gatsbychaty/pulse">
+    <img alt="Top Languages" src="https://img.shields.io/github/languages/top/LewisMatos/gatsbychat.svg" target="_blank" />
   </a>
-  <a href="https://twitter.com/MatosLewis" target="_blank">
-    <img alt="Twitter: MatosLewis" src="https://img.shields.io/twitter/follow/MatosLewis.svg?style=social" />
+  <a href="https://github.com/LewisMatos/gatsbychat/network/dependencies">
+    <img alt="Dependencies" src="https://img.shields.io/david/lewismatos/gatsbychat.svg" target="_blank" />
+  </a>
+   <a href="https://github.com/LewisMatos/gatsbychat/network/dependencies">
+    <img alt="Repo Size" src="https://img.shields.io/github/repo-size/LewisMatos/gatsbychat.svg" target="_blank" />
+  </a>
+     <a href="https://github.com/LewisMatos/gatsbychat/network/dependencies">
+    <img alt="Code Size Size" src="https://img.shields.io/github/languages/code-size/LewisMatos/gatsbychat.svg" target="_blank" />
+  </a>
+    <a href="https://github.com/LewisMatos/gatsbychat//blob/master/LICENSE">
+    <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" target="_blank" />
   </a>
 </p>
 
