@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react"
+import React, { useEffect } from "react"
+import PropTypes from "prop-types"
 import { ChatManager, TokenProvider } from "@pusher/chatkit-client"
 
-import { Amplify, Auth, API } from "aws-amplify"
+import { Auth, API } from "aws-amplify"
 import { Authenticator, Greetings } from "aws-amplify-react" // or 'aws-amplify-react-native';
 import { StyledHome } from "../styles/StyledHome"
 import Header from "../components/header"
@@ -125,13 +126,13 @@ const Home = ({
       headers: {}, // OPTIONAL
     }
     try {
-      const res = await API.post("chatAPI", "/items", myInit)
-       console.log(instance_locator);
+      await API.post("chatAPI", "/items", myInit)
       const chatManager = new ChatManager({
-        instanceLocator: instance_locator,
+        instanceLocator: "v1:us1:cfc83cf8-b8a2-4954-ad81-f788c9315f3e",
         userId: user,
         tokenProvider: new TokenProvider({
-          url: token_url,
+          url:
+            "https://us1.pusherplatform.io/services/chatkit_token_provider/v1/cfc83cf8-b8a2-4954-ad81-f788c9315f3e/token",
         }),
       })
       chatManager.connect().then(currentUser => {
@@ -147,7 +148,6 @@ const Home = ({
       bypassCache: false, // Optional, By default is false. If set to true, this call will send a request to Cognito to get the latest user data
     })
       .then(user => {
-        console.log(user)
         createUser(user.username)
       })
       .catch(err => console.log(err))
@@ -172,11 +172,28 @@ const Home = ({
         </>
       )}
       <Authenticator
+        hide={[Greetings]}
         signUpConfig={signUpConfig}
         onStateChange={handleStateChange}
       />
     </>
   )
+}
+
+Home.propTypes = {
+  user: PropTypes.object,
+  roomId: PropTypes.string,
+  setRoomId: PropTypes.func,
+  message: PropTypes.objectOf(PropTypes.array),
+  joinedRooms: PropTypes.arrayOf(PropTypes.object),
+  joinableRooms: PropTypes.arrayOf(PropTypes.object),
+  setUSER: PropTypes.func,
+  setSignedIn: PropTypes.func,
+  signedIn: PropTypes.bool,
+  setMessage: PropTypes.func,
+  clearMessage: PropTypes.func,
+  setJoinableRooms: PropTypes.func,
+  setJoinedRooms: PropTypes.func,
 }
 
 const mapStateToProps = state => ({
