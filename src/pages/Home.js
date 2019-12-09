@@ -126,7 +126,7 @@ const Home = ({
     }
     try {
       const res = await API.post("chatAPI", "/items", myInit)
-      // console.log(res);
+       console.log(instance_locator);
       const chatManager = new ChatManager({
         instanceLocator: instance_locator,
         userId: user,
@@ -148,13 +148,10 @@ const Home = ({
     })
       .then(user => {
         console.log(user)
-        createUser(user.username);
+        createUser(user.username)
       })
       .catch(err => console.log(err))
-
-
   }, [signedIn])
-
 
   return (
     <>

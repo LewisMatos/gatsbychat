@@ -8,8 +8,8 @@ module.exports = {
     title: `Gatsby Default Starter`,
     description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
     author: `@gatsbyjs`,
-    instance_locator : `v1:us1:cfc83cf8-b8a2-4954-ad81-f788c9315f3e`,
-    token_url : `https://us1.pusherplatform.io/services/chatkit_token_provider/v1/cfc83cf8-b8a2-4954-ad81-f788c9315f3e/token`,
+    instance_locator : `${process.env.INSTANCE_LOCATOR}`,
+    token_url : `${process.env.TOKEN_URL}`,
   },
   plugins: [
     `gatsby-plugin-styled-components`,
