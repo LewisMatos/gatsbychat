@@ -1,0 +1,34 @@
+{
+    "paths": [
+        {
+            "name": "/items",
+            "lambdaFunction": "chatsetup",
+            "privacy": {
+                "open": true
+            }
+        }
+    ],
+    "resourceName": "chatAPI",
+    "apiName": "chatAPI",
+    "functionArns": [
+        {
+            "lambdaFunction": "chatsetup"
+        }
+    ],
+    "privacy": {
+        "auth": 0,
+        "unauth": 0,
+        "authRoleName": "amplify-gatsbychat-dev-20313-authRole",
+        "unAuthRoleName": "amplify-gatsbychat-dev-20313-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "chatsetup",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ]
+}

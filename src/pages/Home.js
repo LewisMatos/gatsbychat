@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react"
-import { Chatkit, ChatManager, TokenProvider } from "@pusher/chatkit-client"
+import { ChatManager, TokenProvider } from "@pusher/chatkit-client"
 
-import Amplify from "aws-amplify"
-import { Authenticator,Greetings  } from "aws-amplify-react" // or 'aws-amplify-react-native';
-
+import { Amplify, Auth, API } from "aws-amplify"
+import { Authenticator, Greetings } from "aws-amplify-react" // or 'aws-amplify-react-native';
 import { StyledHome } from "../styles/StyledHome"
 import Header from "../components/header"
 import RoomList from "../components/RoomList"
@@ -37,7 +36,6 @@ const Home = ({
   setJoinedRooms,
 }) => {
   const { instance_locator, token_url } = useSiteMetadata()
-
   const signUpConfig = {
     hideAllDefaults: true,
     defaultCountryCode: "1",
@@ -89,11 +87,13 @@ const Home = ({
 
   const subscribeToRoom = roomId => {
     clearMessage()
+    console.log('subscribe to room', message);
     user
       .subscribeToRoom({
         roomId,
         hooks: {
           onMessage: message => {
+            console.log(message)
             setMessage(message)
           },
         },
@@ -120,25 +120,46 @@ const Home = ({
       .then(room => subscribeToRoom(room.id))
       .catch(err => console.log("error with createRoom: ", err))
   }
-
+  const createUser = async user => {
+    let myInit = {
+      body: { username: user }, // replace this with attributes you need
+      headers: {}, // OPTIONAL
+    }
+    try {
+      const res = await API.post("chatAPI", "/items", myInit)
+      // console.log(res);
+      const chatManager = new ChatManager({
+        instanceLocator: instance_locator,
+        userId: user,
+        tokenProvider: new TokenProvider({
+          url: token_url,
+        }),
+      })
+      chatManager.connect().then(currentUser => {
+        setUSER(currentUser)
+        getRooms(currentUser)
+      })
+    } catch (error) {
+      console.log(error)
+    }
+  }
   useEffect(() => {
-    const chatManager = new ChatManager({
-      instanceLocator: instance_locator,
-      userId: "Lewis",
-      tokenProvider: new TokenProvider({
-        url: token_url,
-      }),
+    Auth.currentAuthenticatedUser({
+      bypassCache: false, // Optional, By default is false. If set to true, this call will send a request to Cognito to get the latest user data
     })
+      .then(user => {
+        console.log(user)
+        createUser(user.username);
+      })
+      .catch(err => console.log(err))
 
-    chatManager.connect().then(currentUser => {
-      setUSER(currentUser)
-      getRooms(currentUser)
-    })
-  }, [instance_locator, token_url])
+
+  }, [signedIn])
+
 
   return (
     <>
-     <Header siteTitle={"GatsbyChat"}/>
+      <Header siteTitle={"GatsbyChat"} />
       {signedIn && (
         <>
           {/* <Header siteTitle={"GatsbyChat"} /> */}

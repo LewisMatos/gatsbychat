@@ -1,0 +1,28 @@
+{
+    "permissions": {
+        "auth": {
+            "gatsbychat7c1033eb": [
+                "create",
+                "read",
+                "update",
+                "delete"
+            ]
+        },
+        "api": {
+            "gatsbychat": [
+                "create",
+                "read",
+                "update",
+                "delete"
+            ]
+        },
+        "storage": {
+            "chatKit": [
+                "create",
+                "read",
+                "update",
+                "delete"
+            ]
+        }
+    }
+}

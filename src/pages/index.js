@@ -2,8 +2,7 @@ import React from "react"
 import { Provider } from "react-redux"
 
 import Amplify from "aws-amplify"
-import awsmobile from '../../aws-exports';
-
+import awsmobile from '../aws-exports';
 import Home from "./Home"
 import { Normalize } from "styled-normalize"
 import store from "../redux/store"

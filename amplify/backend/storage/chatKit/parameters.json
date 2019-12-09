@@ -1,0 +1,5 @@
+{
+    "tableName": "chatKit",
+    "partitionKeyName": "id",
+    "partitionKeyType": "S"
+}
