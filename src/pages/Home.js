@@ -87,7 +87,6 @@ const Home = ({
 
   const subscribeToRoom = roomId => {
     clearMessage()
-    console.log('subscribe to room', message);
     user
       .subscribeToRoom({
         roomId,
