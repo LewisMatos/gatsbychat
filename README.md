@@ -51,7 +51,7 @@ yarn run test
 
 ## Author
 
-👤 **Lewis Matos <lewm20@gmail.com>**
+👤 **Lewis Matos
 
 * Website: https://lewismatos.com
 * Twitter: [@MatosLewis](https://twitter.com/MatosLewis)
