@@ -68,7 +68,7 @@ Give a ⭐️ if this project helped you!
 
 ## 📝 License
 
-Copyright © 2019 [Lewis Matos <lewm20@gmail.com>](https://github.com/LewisMatos).<br />
+Copyright © 2019 [Lewis Matos](https://github.com/LewisMatos).<br />
 This project is [MIT](https://github.com/gatsbyjs/gatsby-starter-default/blob/master/LICENSE) licensed.
 
 ***
